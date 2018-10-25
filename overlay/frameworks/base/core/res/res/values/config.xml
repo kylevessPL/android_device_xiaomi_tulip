@@ -533,4 +533,7 @@
 
 	<string translatable="false" name="config_mainBuiltInDisplayCutout">M -280,0 L -280,88 L 280,88 L 280,0 Z</string>
 
+    <!-- Whether or not we should show the option to show battery percentage -->
+    <bool name="config_battery_percentage_setting_available">false</bool>
+
 </resources>
