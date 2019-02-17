@@ -24,7 +24,7 @@ $(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera/tulip.mk)
 $(call inherit-product, device/xiaomi/tulip/device.mk)
 
 # Inherit some common Superior stuff.
-TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_BOOT_ANIMATION_RES := 2160
 $(call inherit-product, vendor/superior/config/common.mk)
 
 PRODUCT_NAME := superior_tulip
