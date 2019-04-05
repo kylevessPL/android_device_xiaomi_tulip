@@ -1,12 +1,12 @@
 #============= init ==============
 allow init hwservicemanager:binder { call transfer };
+allow init pmsg_device:chr_file open;
 allow init ipa_dev:chr_file open;
 allow init fingerprintd_device:chr_file setattr;
 allow init ion_device:chr_file ioctl;
-allow init proc:file { setattr read };
 allow init property_socket:sock_file write;
-allow init sysfs:file { open read write };
+allow init socket_device:sock_file { create setattr write };
+allow init audio_device:chr_file { ioctl write read open };
 allow init sysfs_dm:file { open write };
 allow init tee_device:chr_file { write ioctl };
-allow init vndbinder_device:chr_file { ioctl open read write };
 allow init vendor_file:file { execute };

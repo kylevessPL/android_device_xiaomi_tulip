@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Release name
+PRODUCT_RELEASE_NAME := tulip
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
@@ -23,11 +26,10 @@ $(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera/tulip.mk)
 # Inherit from tulip device
 $(call inherit-product, device/xiaomi/tulip/device.mk)
 
-# Inherit some common Superior stuff.
-TARGET_BOOT_ANIMATION_RES := 1080
-$(call inherit-product, vendor/superior/config/common.mk)
+# Inherit some common Xenon stuff
+$(call inherit-product, vendor/xenonhd/config/common_full_phone.mk)
 
-PRODUCT_NAME := superior_tulip
+PRODUCT_NAME := xenonhd_tulip
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := tulip
 PRODUCT_MANUFACTURER := Xiaomi
@@ -44,3 +46,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT := xiaomi/tulip/tulip:8.1.0/OPM1.171019.011/V10.2.2.0.OEKMIXM:user/release-keys
 
 TARGET_VENDOR := Xiaomi
+
+# XenonHD maintainer
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.xenonhd.maintainer=geekon

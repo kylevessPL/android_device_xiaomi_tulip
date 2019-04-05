@@ -28,8 +28,10 @@ $(call inherit-product, vendor/xiaomi/tulip/tulip-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-lineage
 
+#NoCutOut
 PRODUCT_PACKAGES += \
     NoCutoutOverlay
 
@@ -131,8 +133,7 @@ PRODUCT_COPY_FILES += \
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService \
-    com.dsi.ant.antradio_library \
-    libantradio
+    com.dsi.ant.antradio_library
 
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.dsi.ant.antradio_library.xml
@@ -148,6 +149,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     cneapiclient \
     com.quicinc.cne
+
+# Device-specific settings
+PRODUCT_PACKAGES += \
+    XiaomiParts
 
 # Display
 PRODUCT_PACKAGES += \
@@ -171,10 +176,6 @@ PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service \
     android.hardware.broadcastradio@1.0-impl
 
-# Doze
-PRODUCT_PACKAGES += \
-    XiaomiDoze
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
@@ -183,7 +184,8 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint feature
 PRODUCT_PACKAGES += \
-    fingerprintd
+    fingerprintd \
+    android.hardware.biometrics.fingerprint@2.1-service.xiaomi_sdm660
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
@@ -219,10 +221,6 @@ PRODUCT_PACKAGES += \
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service
-
-# Hide
-PRODUCT_PACKAGES += \
-    NoCutoutOverlay
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -273,6 +271,10 @@ PRODUCT_COPY_FILES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.xiaomi_sdm660
+	
+# LiveDisplay native
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-sdm
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -319,8 +321,8 @@ PRODUCT_COPY_FILES += \
 
 # QCOM
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/privapp-permissions-qti.xml \
-    $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/qti_whitelist.xml
+    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \
+    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
 
 # QMI
@@ -344,7 +346,6 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.target.rc \
-    init.tulip.rc \
     ueventd.qcom.rc \
     fstab.qcom
 
@@ -402,6 +403,10 @@ PRODUCT_PACKAGES += \
 # Touchscreen
 PRODUCT_PACKAGES += \
     libtinyxml2
+	
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \
@@ -441,3 +446,5 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+
+$(call inherit-product, vendor/xiaomi/tulip/tulip-vendor.mk)

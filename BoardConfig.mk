@@ -51,7 +51,6 @@ TARGET_USES_64_BIT_BINDER := true
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 earlycon=msm_serial_dm,0xc170000 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=1 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware_mnt/image
 BOARD_KERNEL_CMDLINE += loop.max_part=7
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -63,14 +62,14 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/xiaomi/tulip
 TARGET_KERNEL_CONFIG := tulip-perf_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := 9.0.2
+TARGET_KERNEL_CLANG_VERSION := 9.0.1
 
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USE_SDCLANG := true
 
 # ANT+
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
+BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 
 # Assert
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
@@ -225,7 +224,7 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 TARGET_RIL_VARIANT := caf
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2019-01-01
+VENDOR_SECURITY_PATCH := 2019-03-05
 
 # Seccomp
 BOARD_SECCOMP_POLICY := $(DEVICE_PATH)/seccomp

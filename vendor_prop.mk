@@ -19,7 +19,7 @@ PRODUCT_PROPERTY_OVERRIDES +=  \
     ro.config.media_vol_default=10  \
     ro.config.media_vol_steps=25 \
     ro.config.vc_call_vol_steps=7 \
-    ro.vendor.audio.sdk.fluencetype=fluence  \
+    ro.vendor.audio.sdk.fluencetype=none  \
     ro.vendor.audio.sdk.ssr=false  \
     ro.vendor.audio.sos=true  \
     vendor.audio.dolby.ds2.enabled=false  \
@@ -120,7 +120,7 @@ PRODUCT_PROPERTY_OVERRIDES +=  \
     dev.pm.dyn_samplingrate=1  \
     persist.demo.hdmirotationlock=false  \
     ro.opengles.version=196610  \
-    ro.sf.lcd_density=440  \
+    ro.sf.lcd_density=420  \
     vendor.display.enable_default_color_mode=1  \
     vendor.gralloc.enable_fb_ubwc=1
 
@@ -250,17 +250,6 @@ PRODUCT_PROPERTY_OVERRIDES +=  \
 PRODUCT_PROPERTY_OVERRIDES +=  \
     persist.timed.enable=true
 
-# Volte
-PRODUCT_PROPERTY_OVERRIDES +=  \
-    persist.dbg.volte_avail_ovr=1  \
-    persist.dbg.vt_avail_ovr=1  \
-    persist.dbg.wfc_avail_ovr=1  \
-    persist.dbg.ims_volte_enable=1  \
-    persist.radio.data_con_rprt=1  \
-    persist.radio.calls.on.ims=1  \
-    persist.radio.rat_on=combine  \
-    persist.radio.data_ltd_sys_ind=1
-
 # WFD display
 PRODUCT_PROPERTY_OVERRIDES +=  \
     persist.debug.wfd.enable=1  \
@@ -271,3 +260,9 @@ PRODUCT_PROPERTY_OVERRIDES +=  \
 PRODUCT_PROPERTY_OVERRIDES +=  \
     ro.vendor.qti.config.zram=true
 
+# ADB HAX
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.debuggable=1 \
+    persist.sys.usb.config=adb \
+    ro.secure=0 \
+    ro.adb.secure=0
